@@ -101,7 +101,7 @@ class NumberFormatter extends BaseFormatter
 				$numbers[1] .= str_repeat('0', $msklen - $numlen);
 			}
 			$decimalPart = strrev(self::complexNumberFormatMask(strrev($numbers[1]), strrev($masks[1]), false));
-			$decimalPart = substr($decimalPart, 0, $msklen);
+			$decimalPart = (string) substr($decimalPart, 0, $msklen);
 
 			return "{$sign}{$integerPart}.{$decimalPart}";
 		}
@@ -155,7 +155,7 @@ class NumberFormatter extends BaseFormatter
 		$dec = $matches[2];
 		$right = $matches[3];
 
-		// minimun width of formatted number (including dot)
+		// minimum width of formatted number (including dot)
 		$minWidth = strlen($left) + strlen($dec) + strlen($right);
 		if ($useThousands) {
 			$value = number_format(

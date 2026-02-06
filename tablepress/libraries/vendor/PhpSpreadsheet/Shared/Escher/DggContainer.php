@@ -2,6 +2,8 @@
 
 namespace TablePress\PhpOffice\PhpSpreadsheet\Shared\Escher;
 
+use TablePress\PhpOffice\PhpSpreadsheet\Exception as SpreadsheetException;
+
 class DggContainer
 {
 	/**
@@ -32,7 +34,7 @@ class DggContainer
 	private array $OPT = [];
 
 	/**
-	 * Array of identifier clusters containg information about the maximum shape identifiers.
+	 * Array of identifier clusters containing information about the maximum shape identifiers.
 	 *
 	 * @var mixed[]
 	 */
@@ -93,6 +95,17 @@ class DggContainer
 	{
 		return $this->bstoreContainer;
 	}
+
+	/**
+	 * Get BLIP Store Container.
+	 */
+	public function getBstoreContainerOrThrow(): DggContainer\BstoreContainer
+				{
+					if (!isset($this->bstoreContainer)) {
+						throw new SpreadsheetException('bstoreContainer is unexpectedly null');
+					}
+					return $this->bstoreContainer;
+				}
 
 	/**
 	 * Set BLIP Store Container.
