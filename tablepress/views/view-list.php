@@ -214,7 +214,7 @@ class TablePress_List_View extends TablePress_View {
 
 			$title = '<em>' . __( 'Welcome!', 'tablepress' ) . '</em>';
 
-			$this->add_header_message( $message, 'is-info not-dismissible', $title );
+			$this->add_header_message( $message, 'notice-info not-dismissible', $title );
 		}
 
 		if ( $data['messages']['donation_nag'] ) {
@@ -251,7 +251,7 @@ class TablePress_List_View extends TablePress_View {
 
 			$title = '<em>' . sprintf( __( 'Thank you for updating to TablePress %s!', 'tablepress' ), TablePress::version ) . '</em>';
 
-			$this->add_header_message( $message, 'is-info not-dismissible', $title );
+			$this->add_header_message( $message, 'notice-info not-dismissible', $title );
 		}
 
 		$this->process_action_messages( array(

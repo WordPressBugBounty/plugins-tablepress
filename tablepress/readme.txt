@@ -5,7 +5,7 @@ Tags: table, spreadsheet, csv, excel, tables
 Requires at least: 6.7
 Requires PHP: 7.4
 Tested up to: 7.0
-Stable tag: 3.3
+Stable tag: 3.3.1
 License: GPLv2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -108,6 +108,16 @@ You may also add certain features (like sorting, pagination, filtering, alternat
 
 Changes in recent versions are shown below. For earlier changes, please see the [changelog history](https://tablepress.org/info/#changelog).
 
+= Version 3.3.1 (May 20, 2026) =
+
+* Full compatibility with WordPress 7.0, including an updated visual styling to match the latest WordPress design.
+* **Responsive Tables** and **Fixed Columns** modules: The Scroll Buttons feature now also supports tables that are shown in tabs or accordions! (TablePress Pro and Max only.)
+* Various code modernizations, removal of outdated legacy code, and optimizations for better performance.
+* The list of allowed CSS properties in “Custom CSS” has been extended to include new properties.
+* Several minor bugs and inconsistencies have been fixed and improved!
+* Cleaned up and simplified code, for easier future maintenance, to follow WordPress Coding Standards, and to offer helpful inline documentation.
+* Several external code libraries and build tools have been updated to benefit from enhancements and bug fixes.
+
 = Version 3.3 (April 7, 2026) =
 
 TablePress 3.3 is a feature, stability, maintenance, and compatibility update. Here are the highlights:
@@ -150,6 +160,9 @@ The “Edit” screen for tables has been enhanced with a new sticky header bar 
 * Even more great features for you and your site’s visitors and priority email support are available with a Premium license plan of TablePress. [Go check them out!](https://tablepress.org/premium/?utm_source=wordpress.org&utm_medium=textlink&utm_content=readme)
 
 == Upgrade Notice ==
+
+= 3.3.1 =
+This update is an enhancement, stability, maintenance, and compatibility release. Updating is highly recommended!
 
 = 3.3 =
 This update is a feature, stability, maintenance, and compatibility release. Updating is highly recommended!

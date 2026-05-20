@@ -519,7 +519,7 @@ class TablePress_Admin_Controller extends TablePress_Controller {
 		$data = array(
 			'view_actions'     => $this->view_actions,
 			'message'          => ( ! empty( $_GET['message'] ) ) ? $_GET['message'] : false,
-			'error_details'    => ( ! empty( $_GET['error_details'] ) ) ? $_GET['error_details'] : '',
+			'error_details'    => ( ! empty( $_GET['error_details'] ) ) ? rawurldecode( wp_unslash( $_GET['error_details'] ) ) : '',
 			'site_used_editor' => TablePress::site_used_editor(),
 		);
 
@@ -634,9 +634,9 @@ class TablePress_Admin_Controller extends TablePress_Controller {
 				$data['import_type'] = ( ! empty( $_GET['import_type'] ) ) ? $_GET['import_type'] : 'add';
 				$data['import_existing_table'] = ( ! empty( $_GET['import_existing_table'] ) ) ? $_GET['import_existing_table'] : '';
 				$data['import_source'] = ( ! empty( $_GET['import_source'] ) ) ? $_GET['import_source'] : 'file-upload';
-				$data['import_url'] = ( ! empty( $_GET['import_url'] ) ) ? wp_unslash( $_GET['import_url'] ) : 'https://';
-				$data['import_server'] = ( ! empty( $_GET['import_server'] ) ) ? wp_unslash( $_GET['import_server'] ) : ABSPATH;
-				$data['import_form-field'] = ( ! empty( $_GET['import_form-field'] ) ) ? wp_unslash( $_GET['import_form-field'] ) : '';
+				$data['import_url'] = ( ! empty( $_GET['import_url'] ) ) ? rawurldecode( wp_unslash( $_GET['import_url'] ) ) : 'https://';
+				$data['import_server'] = ( ! empty( $_GET['import_server'] ) ) ? rawurldecode( wp_unslash( $_GET['import_server'] ) ) : ABSPATH;
+				$data['import_form-field'] = ( ! empty( $_GET['import_form-field'] ) ) ? rawurldecode( wp_unslash( $_GET['import_form-field'] ) ) : '';
 				$data['legacy_import'] = ( ! empty( $_GET['legacy_import'] ) ) ? $_GET['legacy_import'] : 'false';
 				break;
 		}
@@ -1211,7 +1211,7 @@ class TablePress_Admin_Controller extends TablePress_Controller {
 				'legacy_import'         => $import_config['legacy_import'],
 			);
 			if ( in_array( $import_config['source'], array( 'url', 'server' ), true ) ) {
-				$redirect_parameters[ "import_{$import_config['source']}" ] = $import_config[ $import_config['source'] ];
+				$redirect_parameters[ "import_{$import_config['source']}" ] = rawurlencode( $import_config[ $import_config['source'] ] );
 			}
 			if ( is_wp_error( $import ) ) {
 				$redirect_parameters['error_details'] = TablePress::get_wp_error_string( $import );
