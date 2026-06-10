@@ -526,7 +526,7 @@ class TablePress_Admin_Controller extends TablePress_Controller {
 		// Depending on the action, load more necessary data for the corresponding view.
 		switch ( $action ) {
 			case 'list':
-				$data['table_id'] = ( ! empty( $_GET['table_id'] ) ) ? $_GET['table_id'] : false;
+				$data['table_id'] = ( isset( $_GET['table_id'] ) ) ? preg_replace( '/[^a-zA-Z0-9_-]/', '', $_GET['table_id'] ) : false;
 				// Prime the post meta cache for cached loading of last_editor.
 				$data['table_ids'] = TablePress::$model_table->load_all( true );
 				$data['messages']['donation_nag'] = $this->maybe_show_donation_message();
@@ -571,7 +571,7 @@ class TablePress_Admin_Controller extends TablePress_Controller {
 				$data['user_options']['parent_page'] = TablePress::$controller->parent_page;
 				break;
 			case 'edit':
-				if ( empty( $_GET['table_id'] ) ) {
+				if ( ! isset( $_GET['table_id'] ) || ! preg_match( '/^[a-zA-Z0-9_-]+$/', $_GET['table_id'] ) ) {
 					TablePress::redirect( array( 'action' => 'list', 'message' => 'error_no_table' ) );
 				}
 				// Load table, with table data, options, and visibility settings.
@@ -602,7 +602,7 @@ class TablePress_Admin_Controller extends TablePress_Controller {
 					$data['tables'][ $table['id'] ] = $table['name'];
 				}
 				$data['tables_count'] = TablePress::$model_table->count_tables();
-				$data['export_ids'] = ( ! empty( $_GET['table_id'] ) ) ? explode( ',', $_GET['table_id'] ) : array();
+				$data['export_ids'] = ( isset( $_GET['table_id'] ) && preg_match( '/^[,a-zA-Z0-9_-]+$/', $_GET['table_id'] ) ) ? explode( ',', $_GET['table_id'] ) : array();
 				$exporter = TablePress::load_class( 'TablePress_Export', 'class-export.php', 'classes' );
 				$data['zip_support_available'] = $exporter->zip_support_available;
 				$data['export_formats'] = $exporter->export_formats;
@@ -632,7 +632,7 @@ class TablePress_Admin_Controller extends TablePress_Controller {
 				$data['tables_count'] = TablePress::$model_table->count_tables();
 				$importer = TablePress::load_class( 'TablePress_Import', 'class-import.php', 'classes' );
 				$data['import_type'] = ( ! empty( $_GET['import_type'] ) ) ? $_GET['import_type'] : 'add';
-				$data['import_existing_table'] = ( ! empty( $_GET['import_existing_table'] ) ) ? $_GET['import_existing_table'] : '';
+				$data['import_existing_table'] = $_GET['import_existing_table'] ?? '';
 				$data['import_source'] = ( ! empty( $_GET['import_source'] ) ) ? $_GET['import_source'] : 'file-upload';
 				$data['import_url'] = ( ! empty( $_GET['import_url'] ) ) ? rawurldecode( wp_unslash( $_GET['import_url'] ) ) : 'https://';
 				$data['import_server'] = ( ! empty( $_GET['import_server'] ) ) ? rawurldecode( wp_unslash( $_GET['import_server'] ) ) : ABSPATH;
@@ -1245,7 +1245,7 @@ class TablePress_Admin_Controller extends TablePress_Controller {
 	 * @since 1.0.0
 	 */
 	public function handle_get_action_hide_message(): void {
-		$message_item = ! empty( $_GET['item'] ) ? $_GET['item'] : '';
+		$message_item = $_GET['item'] ?? '';
 		TablePress::check_nonce( 'hide_message', $message_item );
 
 		if ( ! current_user_can( 'tablepress_list_tables' ) ) {

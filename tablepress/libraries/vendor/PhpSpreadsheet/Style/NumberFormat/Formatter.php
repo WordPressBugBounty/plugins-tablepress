@@ -174,7 +174,13 @@ class Formatter extends BaseFormatter
 
 		// If we have a text value, return it "as is"
 		if (!is_numeric($value)) {
-			return StringHelper::convertToString($value, true, '', false, $lessFloatPrecision);
+			$temp = StringHelper::convertToString($value, true, '', false, $lessFloatPrecision);
+			if (is_callable($callBack)) {
+				$sections = preg_split(self::SECTION_SPLIT, $format) ?: [$format];
+				$temp = $callBack($temp, $sections[3] ?? $sections[0]);
+			}
+
+			return $temp;
 		}
 
 		// For 'General' format code, we just pass the value although this is not entirely the way Excel does it,
