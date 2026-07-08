@@ -776,7 +776,7 @@ class Html extends BaseReader
 
 	protected function processDomElement(DOMNode $element, Worksheet $sheet, int &$row, string &$column, string &$cellContent): void
 	{
-		foreach ($element->childNodes as $child) {
+		foreach ($element->childNodes ?? [] as $child) {
 			if ($child instanceof DOMText) {
 				$domText = Preg::replace('/\s+/', ' ', trim($child->nodeValue ?? ''));
 				if ($domText === "\u{a0}") {

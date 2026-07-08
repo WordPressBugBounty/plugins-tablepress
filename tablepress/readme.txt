@@ -5,7 +5,7 @@ Tags: table, spreadsheet, csv, excel, tables
 Requires at least: 6.7
 Requires PHP: 7.4
 Tested up to: 7.0
-Stable tag: 3.3.2
+Stable tag: 3.3.3
 License: GPLv2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -144,6 +144,14 @@ Priority email support is also included. [Check out the details on the TablePres
 
 Changes in recent versions are shown below. For earlier changes, please see the [changelog history](https://tablepress.org/info/#changelog).
 
+= Version 3.3.3 (July 8, 2026) =
+
+* Full compatibility with WordPress 7.0, including an updated visual styling to match the latest WordPress design.
+* Bugfix: Properly take into account hidden rows when using a complex filter expression with the “Row Filtering” module. (TablePress Pro and Max only.)
+* Bugfix: The sorting arrow icons when using the “Responsive Tables” module’s “Flip” mode no longer break the layout when using small fonts. (TablePress Pro and Max only.)
+* Cleaned up and simplified code, for easier future maintenance, to follow WordPress Coding Standards, and to offer helpful inline documentation.
+* Several external code libraries and build tools have been updated to benefit from enhancements and bug fixes.
+
 = Version 3.3.2 (June 10, 2026) =
 
 * **Security fix**: Reflected XSS. Thanks to Bonds and the Patchstack team for following responsible disclosure policies when reporting this issue!
@@ -207,8 +215,8 @@ The “Edit” screen for tables has been enhanced with a new sticky header bar 
 
 == Upgrade Notice ==
 
-= 3.3.2 =
-This update is a security, maintenance, and compatibility release. Updating is highly recommended!
+= 3.3.3 =
+This update is a stability, maintenance, and compatibility release. Updating is highly recommended!
 
 = 3.3 =
 This update is a feature, stability, maintenance, and compatibility release. Updating is highly recommended!

@@ -78,7 +78,7 @@ class TablePress_Post_Model extends TablePress_Model {
 	}
 
 	/**
-	 * Inserts a post with the correct Custom Post Type and default values in the the wp_posts table in the database.
+	 * Inserts a post with the correct Custom Post Type and default values in the wp_posts table in the database.
 	 *
 	 * @since 1.0.0
 	 *
@@ -136,7 +136,7 @@ class TablePress_Post_Model extends TablePress_Model {
 	}
 
 	/**
-	 * Updates an existing post with the correct Custom Post Type and default values in the the wp_posts table in the database.
+	 * Updates an existing post with the correct Custom Post Type and default values in the wp_posts table in the database.
 	 *
 	 * @since 1.0.0
 	 *

@@ -27,7 +27,7 @@ abstract class TablePress {
 	 * @since 1.0.0
 	 * @const string
 	 */
-	public const version = '3.3.2'; // phpcs:ignore Generic.NamingConventions.UpperCaseConstantName.ClassConstantNotUpperCase
+	public const version = '3.3.3'; // phpcs:ignore Generic.NamingConventions.UpperCaseConstantName.ClassConstantNotUpperCase
 
 	/**
 	 * TablePress internal plugin version ("options scheme" version).
@@ -37,7 +37,7 @@ abstract class TablePress {
 	 * @since 1.0.0
 	 * @const int
 	 */
-	public const db_version = 129; // phpcs:ignore Generic.NamingConventions.UpperCaseConstantName.ClassConstantNotUpperCase
+	public const db_version = 130; // phpcs:ignore Generic.NamingConventions.UpperCaseConstantName.ClassConstantNotUpperCase
 
 	/**
 	 * TablePress "table scheme" (data format structure) version.
@@ -540,13 +540,13 @@ abstract class TablePress {
 							// Quoted key.
 							$quote_char = $js_object_string[ $j ];
 							--$j;
-							while ( $j >= 0 && $quote_char !== $js_object_string[ $j ] ) { // @phpstan-ignore greaterOrEqual.alwaysFalse, offsetAccess.notFound, booleanAnd.alwaysFalse
+							while ( $j >= 0 && $quote_char !== $js_object_string[ $j ] ) {
 								--$j;
 							}
 							$key_start = $j + 1;
 						} else {
 							// Unquoted key.
-							while ( $j >= 0 && preg_match( '/[\w]/', $js_object_string[ $j ] ) ) { // @phpstan-ignore greaterOrEqual.alwaysFalse, offsetAccess.notFound, booleanAnd.alwaysFalse
+							while ( $j >= 0 && preg_match( '/[\w]/', $js_object_string[ $j ] ) ) {
 								--$j;
 							}
 							$key_start = $j + 1;
